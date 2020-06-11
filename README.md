@@ -50,15 +50,15 @@ Em **File firestore.indexes.json already exists. Do you want to overwrite it wit
 
 Em **What language would you like to use to write Cloud Functions?** selecione **JavaScript** e pressione **Enter**
 
-Em **Do you want to use ESLint to catch probable bugs and enforce style?** selecione **JavaScript** e pressione **N**
+Em **Do you want to use ESLint to catch probable bugs and enforce style?** pressione **N** e **Enter**
 
-Em **File functions/package.json already exists. Overwrite?**  pressione **n** e **Enter**
+Em **File functions/package.json already exists. Overwrite?** pressione **n** e **Enter**
 
-Em **File functions/index.js already exists. Overwrite?**  pressione **n** e **Enter**
+Em **File functions/index.js already exists. Overwrite?** pressione **n** e **Enter**
 
-Em **File functions/.gitignore already exists. Overwrite?**  pressione **n** e **Enter**
+Em **File functions/.gitignore already exists. Overwrite?** pressione **n** e **Enter**
 
-Em **Do you want to install dependencies with npm now?** pressione **Y**
+Em **Do you want to install dependencies with npm now?** pressione **n** e **Enter**
 
 ### Acessando o diretório principal do projeto
 
