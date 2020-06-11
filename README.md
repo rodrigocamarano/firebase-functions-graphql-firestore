@@ -42,11 +42,21 @@ Selecione o projeto criado e pressione **Enter**
 
 Em **What file should be used for Firestore Rules?** pressione **Enter**
 
+Em **File firestore.rules already exists. Do you want to overwrite it with the Firestore Rules from the Firebase Console?** pressione **y** e **Enter**
+
 Em **What file should be used for Firestore indexes?** pressione **Enter**
+
+Em **File firestore.indexes.json already exists. Do you want to overwrite it with the Firestore Indexes from the Firebase Console?**  pressione **y** e **Enter**
 
 Em **What language would you like to use to write Cloud Functions?** selecione **JavaScript** e pressione **Enter**
 
 Em **Do you want to use ESLint to catch probable bugs and enforce style?** selecione **JavaScript** e pressione **N**
+
+Em **File functions/package.json already exists. Overwrite?**  pressione **n** e **Enter**
+
+Em **File functions/index.js already exists. Overwrite?**  pressione **n** e **Enter**
+
+Em **File functions/.gitignore already exists. Overwrite?**  pressione **n** e **Enter**
 
 Em **Do you want to install dependencies with npm now?** pressione **Y**
 
