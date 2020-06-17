@@ -1,7 +1,7 @@
 const categoryTypes = `    
 
     type Category {
-        _id: ID!
+        id: ID!
         title: String!
         slug: String!
         isFeatured: Boolean!

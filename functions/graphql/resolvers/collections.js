@@ -8,7 +8,7 @@ const getAllCategories = async nested => {
             .then(docs => {
                 docs.forEach(doc => {
                     categories.push({
-                        _id: doc.id,
+                        id: doc.id,
                         title: doc.data().title,
                         slug: doc.data().slug,
                         isFeatured: doc.data().isFeatured,
@@ -29,7 +29,7 @@ const getAllProducts = async nested => {
             .then(docs => {
                 docs.forEach(doc => {
                     products.push({
-                        _id: doc.id,
+                        id: doc.id,
                         title: doc.data().title,
                         slug: doc.data().slug,
                         description: doc.data().description,
@@ -49,10 +49,10 @@ const getAllProducts = async nested => {
 };
 
 const getListProducts = async (docs, nested) => {
-    const itemsTemp = [];
+    const items = [];
     docs.forEach(doc => {
-        itemsTemp.push({
-            _id: doc.id,
+        items.push({
+            id: doc.id,
             title: doc.data().title,
             slug: doc.data().slug,
             description: doc.data().description,
@@ -66,18 +66,19 @@ const getListProducts = async (docs, nested) => {
             updatedAt: doc.data().updatedAt.toDate().toISOString()
         });
     });
-    const items = [];
-    const getCategories = await getAllCategories(false);
-    itemsTemp.forEach(item => {
-        const categories = [];
-        item.categories.forEach(category => {
-            getCategories.forEach(p => {
-                if (p._id == category) {
-                    categories.push(p);
+    const allCategories = await getAllCategories(false);
+    const getCategories = categories => {
+        const result = [];
+        categories.forEach(async category => {
+            allCategories.forEach(element => {
+                if (category === element.id) {
+                    result.push({
+                        ...element
+                    });
                 }
             });
         });
-        categories.sort((a, b) => {
+        result.sort((a, b) => {
             if (a.title > b.title) {
                 return 1;
             }
@@ -86,17 +87,21 @@ const getListProducts = async (docs, nested) => {
             }
             return 0;
         });
-
-        items.push({ ...item, categories });
+        return result;
+    };
+    return items.map(item => {
+        return {
+            ...item,
+            categories: getCategories(item.categories)
+        }
     });
-    return items;
 };
 
 const getListCategories = async (docs, nested) => {
-    const itemsTemp = [];
+    const items = [];
     docs.forEach(doc => {
-        itemsTemp.push({
-            _id: doc.id,
+        items.push({
+            id: doc.id,
             title: doc.data().title,
             slug: doc.data().slug,
             isFeatured: doc.data().isFeatured,
@@ -105,18 +110,19 @@ const getListCategories = async (docs, nested) => {
             updatedAt: doc.data().updatedAt.toDate().toISOString()
         });
     });
-    const items = [];
-    const getProducts = await getAllProducts(false);
-    itemsTemp.forEach(item => {
-        const products = [];
-        item.products.forEach(product => {
-            getProducts.forEach(p => {
-                if (p._id == product) {
-                    products.push(p);
+    const allProducts = await getAllProducts(false);
+    const getProducts = products => {
+        const result = [];
+        products.forEach(async product => {
+            allProducts.forEach(element => {
+                if (product === element.id) {
+                    result.push({
+                        ...element
+                    });
                 }
             });
         });
-        products.sort((a, b) => {
+        result.sort((a, b) => {
             if (a.title > b.title) {
                 return 1;
             }
@@ -125,15 +131,21 @@ const getListCategories = async (docs, nested) => {
             }
             return 0;
         });
-        items.push({ ...item, products });
+        return result;
+    };
+
+    return items.map(item => {
+        return {
+            ...item,
+            products: getProducts(item.products)
+        }
     });
-    return items;
 };
 
 const getProduct = async (doc, nested) => {
     if (doc) {
         let product = {
-            _id: doc.id,
+            id: doc.id,
             title: doc.data().title,
             slug: doc.data().slug,
             description: doc.data().description,
@@ -150,7 +162,7 @@ const getProduct = async (doc, nested) => {
         const categories = [];
         product.categories.forEach(item => {
             getCategories.forEach(c => {
-                if (c._id == item) {
+                if (c.id == item) {
                     categories.push(c);
                 }
             });
@@ -181,7 +193,7 @@ const getProduct = async (doc, nested) => {
 const getCategory = async (doc, nested) => {
     if (doc) {
         let category = {
-            _id: doc.id,
+            id: doc.id,
             title: doc.data().title,
             slug: doc.data().slug,
             isFeatured: doc.data().isFeatured,
@@ -193,7 +205,7 @@ const getCategory = async (doc, nested) => {
         const products = [];
         category.products.forEach(item => {
             getProducts.forEach(p => {
-                if (p._id == item) {
+                if (p.id == item) {
                     products.push(p);
                 }
             });

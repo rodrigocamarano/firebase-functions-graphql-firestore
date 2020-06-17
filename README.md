@@ -92,7 +92,7 @@ https://us-central1-project.cloudfunctions.net/api/graphql
 ```sh
 mutation CreateCategory {
   createCategory(categoryInput: {title: "Category 1", isFeatured: true}) {
-    _id
+    id
     title
     slug
     isFeatured
@@ -105,7 +105,7 @@ mutation CreateCategory {
 ```sh
 mutation UpdateCategory {
   updateCategory(id: "1bKPSEtWAeY1jJeR5SLM", categoryInput: {title: "Category 1", isFeatured: true}) {
-    _id
+    id
     title
     slug
     isFeatured
@@ -118,14 +118,14 @@ mutation UpdateCategory {
 ```sh
 query Category {
   category(id: "1bKPSEtWAeY1jJeR5SLM") {
-    _id
+    id
     title
     slug
     isFeatured
     createdAt
     updatedAt
     products {
-      _id
+      id
       title
       slug
       description
@@ -145,14 +145,14 @@ query Category {
 query Categories {
   categories {
     categories {
-      _id
+      id
       title
       slug
       isFeatured
       createdAt
       updatedAt
       products {
-        _id
+        id
         title
         slug
         description
@@ -180,7 +180,7 @@ mutation DeleteCategory {
 ```sh
 mutation CreateProduct {
   createProduct(productInput: {title: "Product 1", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse elit diam, imperdiet nec mi quis, viverra ultrices enim.", details: "Curabitur semper, tellus vel lacinia feugiat, velit neque euismod augue, quis convallis nunc dui ac arcu. Suspendisse id pellentesque neque. Nulla facilisi. In rutrum magna dui, eget porttitor lacus tempus nec. Fusce id pellentesque felis, et varius justo. Maecenas vel orci sollicitudin, hendrerit quam et, vestibulum nunc. Morbi quis nulla ornare, suscipit enim nec, convallis turpis. Aliquam et condimentum tellus. Aliquam efficitur imperdiet tempus. Vestibulum vitae eros non sem pellentesque euismod pulvinar a odio. Quisque a nunc sit amet odio luctus mattis.", price: 50, isService: true, isActivated: true, isFeatured: true}) {
-    _id
+    id
     title
     slug
     description
@@ -198,7 +198,7 @@ mutation CreateProduct {
 ```sh
 mutation UpdateProduct {
   updateProduct(id: "ixijLttUpV8ziTCwO6RT", productInput: {title: "Product 1", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse elit diam, imperdiet nec mi quis, viverra ultrices enim.", details: "Curabitur semper, tellus vel lacinia feugiat, velit neque euismod augue, quis convallis nunc dui ac arcu. Suspendisse id pellentesque neque. Nulla facilisi. In rutrum magna dui, eget porttitor lacus tempus nec. Fusce id pellentesque felis, et varius justo. Maecenas vel orci sollicitudin, hendrerit quam et, vestibulum nunc. Morbi quis nulla ornare, suscipit enim nec, convallis turpis. Aliquam et condimentum tellus. Aliquam efficitur imperdiet tempus. Vestibulum vitae eros non sem pellentesque euismod pulvinar a odio. Quisque a nunc sit amet odio luctus mattis.", price: 50, isService: true, isActivated: false, isFeatured: true}) {
-    _id
+    id
     title
     slug
     description
@@ -209,7 +209,7 @@ mutation UpdateProduct {
     createdAt
     updatedAt
     categories {
-      _id
+      id
       title
       slug
       isFeatured
@@ -223,7 +223,7 @@ mutation UpdateProduct {
 ```sh
 query Product {
   product(id: "ixijLttUpV8ziTCwO6RT") {
-    _id
+    id
     title
     slug
     description
@@ -234,7 +234,7 @@ query Product {
     createdAt
     updatedAt
     categories {
-      _id
+      id
       title
       slug
       isFeatured
@@ -249,7 +249,7 @@ query Product {
 query Products {
   products {
     products {
-      _id
+      id
       title
       slug
       description
@@ -260,7 +260,7 @@ query Products {
       createdAt
       updatedAt
       categories {
-        _id
+        id
         title
         slug
         isFeatured
@@ -283,7 +283,7 @@ mutation DeleteProduct {
 ```sh
 mutation CreateProduct {
   createProductCategory(productId: "ixijLttUpV8ziTCwO6RT", categoryId: "1bKPSEtWAeY1jJeR5SLM") {
-    _id
+    id
       title
       slug
       description
@@ -294,7 +294,7 @@ mutation CreateProduct {
       createdAt
       updatedAt
       categories {
-        _id
+        id
         title
         slug
         isFeatured
@@ -308,7 +308,7 @@ mutation CreateProduct {
 ```sh
 mutation DeleteProductCategory {
   deleteProductCategory(productId: "ixijLttUpV8ziTCwO6RT", categoryId: "1bKPSEtWAeY1jJeR5SLM") {
-    _id
+    id
       title
       slug
       description
@@ -319,7 +319,7 @@ mutation DeleteProductCategory {
       createdAt
       updatedAt
       categories {
-        _id
+        id
         title
         slug
         isFeatured

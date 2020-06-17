@@ -189,7 +189,7 @@ module.exports = {
 
         for (let i = 0; i < product.categories.length; i++) {
             const _category = product.categories[i];
-            if (_category === category._id) {
+            if (_category === category.id) {
                 existsInProduct = true;
             }
         }
@@ -217,7 +217,7 @@ module.exports = {
         let existsInCategory = false;
         for (let i = 0; i < category.products.length; i++) {
             const _product = category.products[i];
-            if (_product === product._id) {
+            if (_product === product.id) {
                 existsInCategory = true;
             }
         }

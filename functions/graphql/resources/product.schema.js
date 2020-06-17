@@ -1,7 +1,7 @@
 const productTypes = `
 
     type Product {
-        _id: ID!
+        id: ID!
         title: String!
         slug: String!
         description: String!
